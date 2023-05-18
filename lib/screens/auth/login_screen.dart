@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ggpl/config/palette.dart';
 import 'package:ggpl/screens/screens.dart';
+import 'package:ggpl/widgets/bottom_nav_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -169,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-
+                        Get.to(BottomNavBar());
                       },
                       child: Text('LOGIN',style: TextStyle(
                           fontSize: 16,

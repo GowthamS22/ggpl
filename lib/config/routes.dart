@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ggpl/widgets/bottom_nav_bar.dart';
 import '../screens/screens.dart';
 
 class Routes {
@@ -36,6 +37,12 @@ class Routes {
     GetPage(
         name: '/verify-account',
         page:() => VerifyAccountScreen(),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/home',
+        page:() => BottomNavBar(),
         transition: Transition.zoom,
         transitionDuration: Duration(milliseconds: 500)
     ),
