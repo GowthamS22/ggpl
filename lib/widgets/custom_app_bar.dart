@@ -65,9 +65,15 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
                 Text('GROCERY SHOPPING STORE',style: TextStyle(fontSize: 12),)
               ],
             ),
-            Icon(
-              Icons.person_2_outlined,
-              size: 40,
+            TextButton(
+              child: Icon(
+                Icons.shopping_basket,
+                size: 30,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Get.toNamed('cart');
+              },
             )
           ],
         ) : Text('${currentPage.title}'),

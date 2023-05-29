@@ -43,36 +43,43 @@ class Routes {
     GetPage(
         name: '/home',
         page:() => BottomNavBar(),
-        transition: Transition.zoom,
+        transition: Transition.fade,
         transitionDuration: Duration(milliseconds: 500)
     ),
     GetPage(
         name: '/profile',
         title: 'MY PROFILE',
         page:() => ProfileScreen(),
-        transition: Transition.zoom,
+        transition: Transition.fade,
         transitionDuration: Duration(milliseconds: 500)
     ),
     GetPage(
         name: '/category-products',
         title: 'CATEGORY PRODUCTS',
         page:() => CategoryProducts(),
-        transition: Transition.zoom,
+        transition: Transition.fade,
         transitionDuration: Duration(milliseconds: 500)
     ),
     GetPage(
         name: '/offers',
         title: 'OFFERS',
         page:() => OfferScreen(),
-        transition: Transition.zoom,
+        transition: Transition.fade,
         transitionDuration: Duration(milliseconds: 500)
     ),
     GetPage(
         name: '/single-product',
         title: 'SINGLE PRODUCT',
         page:() => SingleProductScreen(),
-        transition: Transition.zoom,
+        transition: Transition.fade,
         transitionDuration: Duration(milliseconds: 500)
     ),
+    GetPage(
+        name: '/cart',
+        title: 'SHOPPING CART',
+        page:() => CartScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    )
   ];
 }

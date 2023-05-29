@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Product sans'
       ),
-      initialRoute: 'single-product',
+      initialRoute: 'home',
       getPages: Routes.routes,
     );
   }

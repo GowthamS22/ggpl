@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ggpl/models/product.dart';
 
 import '../config/palette.dart';
@@ -12,24 +13,24 @@ class SimpleProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-
+        Get.toNamed('single-product',arguments: {'id': product.id,});
       },
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(15),
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(20)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey,
+                  color: Palette.productBg,
                 ),
                 BoxShadow(
-                  color: Palette.gridBg,
-                  spreadRadius: -1.0,
-                  blurRadius: 3.0,
-                  offset: Offset(-2, -2,)
+                    color: Palette.gridBg,
+                    spreadRadius: -5,
+                    blurRadius: 5.0,
+                    offset: Offset(-5, -3,)
                 ),
               ],
             ),
@@ -43,7 +44,7 @@ class SimpleProductItem extends StatelessWidget {
                   ),
                   child: Image(
                     image: AssetImage(product.imageUrl),
-                    width: 130,
+                    width: double.infinity,
                     height: 120,
                   ),
                 ),
@@ -63,6 +64,58 @@ class SimpleProductItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+
+                    Container(
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: Palette.uomBg,
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                      ),
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              child: Text('-',style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Palette.secondaryColor
+                              ),),
+                            ),
+                            onTap: () {
+                              print('decrase');
+                            },
+                          ),
+                          Container(
+                            width: 30,
+                            child: TextField(
+                              maxLength: 3,
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                hintText: '0',
+                                border: InputBorder.none,
+                                counterText: "",
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          InkWell(
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              child: Text('+',style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Palette.secondaryColor
+                              ),),
+                            ),
+                            onTap: () {
+
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 1),
                       decoration: BoxDecoration(
@@ -90,20 +143,23 @@ class SimpleProductItem extends StatelessWidget {
                         ),
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
 
-                      },
-                      child: Text('ADD',style: TextStyle(
-                        fontSize: 16,
-                      ),),
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Palette.primaryColor)
-                      ),
-                    )
                   ],
-                )
+                ),
+                Container(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
 
+                    },
+                    child: Text('ADD',style: TextStyle(
+                      fontSize: 16,
+                    ),),
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Palette.primaryColor)
+                    ),
+                  ),
+                )
               ],
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ggpl/config/palette.dart';
 
 import '../models/product.dart';
@@ -15,6 +16,7 @@ class ProductItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         print(product.id);
+        Get.toNamed('single-product',arguments: {'id': product.id,});
       },
       child: Stack(
         children: [
@@ -24,13 +26,13 @@ class ProductItem extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey,
+                  color: Palette.productBg,
                 ),
                 BoxShadow(
                     color: Palette.gridBg,
-                    spreadRadius: -0.5,
+                    spreadRadius: -5,
                     blurRadius: 5.0,
-                    offset: Offset(-2, -2,)
+                    offset: Offset(-5, -3,)
                 ),
               ],
             ),
@@ -63,33 +65,81 @@ class ProductItem extends StatelessWidget {
                       fontSize: 18,
                     )),
                     SizedBox(height: 10,),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        color: Palette.uomBg,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      height:30,
-                      width: 150,
-                      child: DropdownButton(
-                        items: <String>[
-                          'KGS',
-                          'PCS',
-                        ].map<DropdownMenuItem<String>>((String value){
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (value) {
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 35,
+                          decoration: BoxDecoration(
+                            color: Palette.uomBg,
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                          ),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  child: Icon(Icons.remove_circle,color: Palette.secondaryColor,size: 25,),
+                                ),
+                                onTap: () {
+                                  print('decrase');
+                                },
+                              ),
+                              Container(
+                                width: 30,
+                                child: TextField(
+                                  maxLength: 3,
+                                  textAlign: TextAlign.center,
+                                  decoration: InputDecoration(
+                                    hintText: '0',
+                                    border: InputBorder.none,
+                                    counterText: "",
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                ),
+                              ),
+                              InkWell(
+                                child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  child: Icon(Icons.add_circle,color: Palette.secondaryColor,size: 25,),
+                                ),
+                                onTap: () {
 
-                        },
-                        value: 'KGS',
-                        dropdownColor: Palette.uomBg,
-                        underline: Container( // Custom underline for the dropdown button
-                          height: 0,
+                                },
+                              )
+                            ],
+                          ),
                         ),
-                      ),
+                        SizedBox(width: 5,),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            color: Palette.uomBg,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          height:35,
+                          // width: 150,
+                          child: DropdownButton(
+                            items: <String>[
+                              'KGS',
+                              'PCS',
+                            ].map<DropdownMenuItem<String>>((String value){
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (value) {
+
+                            },
+                            value: 'KGS',
+                            dropdownColor: Palette.uomBg,
+                            underline: Container( // Custom underline for the dropdown button
+                              height: 0,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 5,),
                     Container(
@@ -128,6 +178,20 @@ class ProductItem extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                   ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 10,
+            right: 10,
+            child: Transform.rotate(
+              angle: -0.0,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Image(
+                  image: AssetImage('assets/images/products/product-type.png'),
+                  color: Colors.green,
                 ),
               ),
             ),

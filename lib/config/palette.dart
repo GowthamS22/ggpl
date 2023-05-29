@@ -10,4 +10,5 @@ class Palette {
   static const Color adbackgroundColor = Color(0xFFE8F1FF);
   static const Color uomBg = Color(0xFFE6E6E6);
   static const Color gridBg = Color(0xFFF5F9FF);
+  static const Color productBg = Color(0xFFe2e8fc);
 }

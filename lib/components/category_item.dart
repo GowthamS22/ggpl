@@ -11,7 +11,7 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed('category-products');
+        Get.toNamed('category-products',arguments: {'id': category.id,});
       },
       child: Column(
         children: [

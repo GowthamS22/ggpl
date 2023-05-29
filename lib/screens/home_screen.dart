@@ -434,7 +434,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisCount: 2, // Number of columns
                   mainAxisSpacing: 10, // Spacing between each row
                   crossAxisSpacing: 10, // Spacing between each column
-                  childAspectRatio: 0.6, // Adjust the aspect ratio as needed
+                  childAspectRatio: 0.54, // Adjust the aspect ratio as needed
                 ),
                 itemCount: productController.products.length,
                 itemBuilder: (context, index) {
