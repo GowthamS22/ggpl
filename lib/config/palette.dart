@@ -7,4 +7,7 @@ class Palette {
   static const Color secondaryColor = Color(0xFF472D2D);
   static const Color linkColor = Color(0xFFF16522);
   static const Color floatingIconColor = Color(0xFFF44831);
+  static const Color adbackgroundColor = Color(0xFFE8F1FF);
+  static const Color uomBg = Color(0xFFE6E6E6);
+  static const Color gridBg = Color(0xFFF5F9FF);
 }

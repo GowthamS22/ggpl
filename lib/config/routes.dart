@@ -46,5 +46,33 @@ class Routes {
         transition: Transition.zoom,
         transitionDuration: Duration(milliseconds: 500)
     ),
+    GetPage(
+        name: '/profile',
+        title: 'MY PROFILE',
+        page:() => ProfileScreen(),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/category-products',
+        title: 'CATEGORY PRODUCTS',
+        page:() => CategoryProducts(),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/offers',
+        title: 'OFFERS',
+        page:() => OfferScreen(),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/single-product',
+        title: 'SINGLE PRODUCT',
+        page:() => SingleProductScreen(),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
   ];
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ggpl/config/palette.dart';
-import 'package:ggpl/controllers/bottom_nav_bar_controller.dart';
 import 'package:ggpl/screens/screens.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -17,8 +16,8 @@ class _BottomNavBarState extends State<BottomNavBar> with SingleTickerProviderSt
   final List<Widget> pages = [
     LoginScreen(),
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    OfferScreen(),
+    ProfileScreen(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
@@ -37,6 +36,30 @@ class _BottomNavBarState extends State<BottomNavBar> with SingleTickerProviderSt
         child: FloatingActionButton(
           child: Icon(Icons.search_rounded, size: 35),
           onPressed: () {
+            Get.bottomSheet(
+              Container(
+                color: Colors.white,
+                height: MediaQuery.of(context).size.height,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'This is a top sheet',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      ElevatedButton(
+                        child: Text('Close'),
+                        onPressed: () {
+                          Get.back();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              barrierColor: Colors.transparent,
+            );
           },
           backgroundColor: Palette.floatingIconColor,
           splashColor: Palette.floatingIconColor,
@@ -111,7 +134,7 @@ class _BottomNavBarState extends State<BottomNavBar> with SingleTickerProviderSt
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentPage = LoginScreen();
+                        currentPage = OfferScreen();
                         currentTab  = 2;
                       });
                     },
@@ -135,7 +158,7 @@ class _BottomNavBarState extends State<BottomNavBar> with SingleTickerProviderSt
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentPage = LoginScreen();
+                        currentPage = ProfileScreen();
                         currentTab  = 3;
                       });
                     },

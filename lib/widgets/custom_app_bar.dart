@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ggpl/config/palette.dart';
+import 'package:ggpl/config/routes.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
   const CustomAppBar({Key? key}) : super(key: key);
@@ -9,6 +11,17 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
 
   @override
   Widget build(BuildContext context) {
+
+    String currentRoute = Get.currentRoute;
+    String currentRouteTitle = '';
+
+    if (!currentRoute.startsWith('/')) {
+      currentRoute = '/$currentRoute';
+    }
+
+    GetPage? currentPage = Routes.routes.firstWhere((route) => route.name == currentRoute,
+        orElse: () => GetPage(name: '', page: () => Container(), title: 'Default Title'));
+
     return Container(
       decoration: BoxDecoration(
         color: Palette.primaryColor
@@ -20,6 +33,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
         elevation: 0,
         leading: Row(
           children: [
+            Get.currentRoute == 'home' ?
             IconButton(
               icon: const Icon(
                 Icons.menu,
@@ -27,12 +41,21 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
               ),
               iconSize: 28.0,
               onPressed: () {
-
+                Scaffold.of(context).openDrawer();
+              },
+            ) : IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              iconSize: 28.0,
+              onPressed: () {
+                Get.back();
               },
             )
           ],
         ),
-        title: Row(
+        title: Get.currentRoute == 'home' ? Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
@@ -47,7 +70,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
               size: 40,
             )
           ],
-        ),
+        ) : Text('${currentPage.title}'),
       ),
     );
   }

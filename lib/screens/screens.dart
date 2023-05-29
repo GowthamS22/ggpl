@@ -5,3 +5,7 @@ export 'auth/register_screen.dart';
 export 'auth/forgot_password_screen.dart';
 export 'auth/verify_account_screen.dart';
 export 'home_screen.dart';
+export 'auth/profile_screen.dart';
+export 'category_products.dart';
+export 'offer_screen.dart';
+export 'products/single_product_screen.dart';

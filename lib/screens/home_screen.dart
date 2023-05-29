@@ -1,8 +1,13 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ggpl/components/category_item.dart';
+import 'package:ggpl/components/simple_product_item.dart';
 import 'package:ggpl/config/palette.dart';
+import 'package:ggpl/controllers/category_controller.dart';
+import 'package:ggpl/controllers/product_controller.dart';
 import 'package:ggpl/widgets/custom_app_bar.dart';
+import 'package:ggpl/widgets/custom_app_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,33 +16,20 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class Product {
-  final String name;
-  final String imageUrl;
-
-  Product({required this.name, required this.imageUrl});
-}
-
 class _HomeScreenState extends State<HomeScreen> {
 
   final Map<String, String> bannerData = {
     'title': 'LOOKING FOR'
   };
 
-  final List<Product> products = [
-    Product(name: 'LEAVES', imageUrl: 'assets/images/products/product-1.png'),
-    Product(name: 'PODS', imageUrl: 'assets/images/products/product-2.png'),
-    Product(name: 'LEAVES', imageUrl: 'assets/images/products/product-1.png'),
-    Product(name: 'LEAVES', imageUrl: 'assets/images/products/product-1.png'),
-    Product(name: 'LEAVES', imageUrl: 'assets/images/products/product-1.png'),
-    Product(name: 'LEAVES', imageUrl: 'assets/images/products/product-1.png'),
-    // Add more product items as needed
-  ];
+  final CategoryController categoryController = Get.put(CategoryController());
+  final ProductController productController = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
+      drawer: CustomAppDrawer(),
       body: CustomScrollView(
         slivers: [
           _buildLocationSec(),
@@ -45,6 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
           _buildBannerSec(),
           _buildCouponSec(),
           _buildCategoriesSec(),
+          _buildAdSec(),
+          _buildProductSec(),
         ],
       ),
     );
@@ -347,9 +341,9 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             Container(
-              height: 400,
+              height: 300,
               child: GridView.builder(
-                itemCount: products.length,
+                itemCount: categoryController.categories.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, // Number of columns
                   mainAxisSpacing: 10, // Spacing between each row
@@ -357,40 +351,100 @@ class _HomeScreenState extends State<HomeScreen> {
                   childAspectRatio: 0.8, // Adjust the aspect ratio as needed
                 ),
                 itemBuilder: (context, index) {
-                  final product = products[index];
-                  return Column(
-                    children: [
-                      Container(
-                          width: double.infinity,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                product.imageUrl,
-                                height: 100,
-                              ),
-                            ],
-                          ),
-                        decoration: BoxDecoration(
-                          color: Colors.lightGreen,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                      ),
-                      SizedBox(height: 8,),
-                      Text(
-                        product.name,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  );
+                  final category = categoryController.categories[index];
+                  return CategoryItem(category: category);
                 },
               ),
             )
           ],
         )
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildAdSec() {
+    return SliverToBoxAdapter(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(20),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Palette.adbackgroundColor,
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(20))
+                    ),
+                    padding: EdgeInsets.all(5),
+                    child: Image.asset('assets/images/banner/ad.png'),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('POWER UP WITH',style: TextStyle(
+                        color: Palette.secondaryColor,
+                        fontSize: 18,
+                      ),),
+                      Text('Vegetables & Fruits',style: TextStyle(
+                        color: Palette.linkColor,
+                        fontSize: 18,
+                      ),),
+                      Text('UPTO 50% OFF*',style: TextStyle(
+                        color: Palette.secondaryColor,
+                        fontSize: 20,
+                      ),),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildProductSec() {
+    return SliverToBoxAdapter(
+      child: Container(
+        height: 650,
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20,),
+            Text('Vegetables & Fruits',style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Palette.secondaryColor
+            ),),
+            SizedBox(height: 20,),
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // Number of columns
+                  mainAxisSpacing: 10, // Spacing between each row
+                  crossAxisSpacing: 10, // Spacing between each column
+                  childAspectRatio: 0.6, // Adjust the aspect ratio as needed
+                ),
+                itemCount: productController.products.length,
+                itemBuilder: (context, index) {
+                  final product = productController.products[index];
+                  return SimpleProductItem(product: product);
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
