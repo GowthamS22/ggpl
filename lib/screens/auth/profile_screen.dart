@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ggpl/screens/screens.dart';
 import 'package:ggpl/widgets/custom_app_bar.dart';
 import 'package:ggpl/widgets/custom_app_drawer.dart';
 
@@ -14,16 +16,17 @@ class ProfileScreen extends StatefulWidget {
 class MenuItem {
   final String title;
   final IconData icon;
-  final Widget destination;
+  final String destination;
 
   MenuItem({required this.title, required this.icon, required this.destination});
 }
 
 List<MenuItem> menuItems = [
-  MenuItem(title: 'My Orders', icon: Icons.home, destination: ProfileScreen()),
-  MenuItem(title: 'My Ratings & Reviews', icon: Icons.person, destination: ProfileScreen()),
-  MenuItem(title: 'Notifications', icon: Icons.notifications, destination: ProfileScreen()),
-  MenuItem(title: 'My Gift Cards', icon: Icons.card_giftcard, destination: ProfileScreen()),
+  MenuItem(title: 'My Orders', icon: Icons.home, destination: 'my-orders'),
+  MenuItem(title: 'My Ratings & Reviews', icon: Icons.person, destination: 'notifications'),
+  MenuItem(title: 'Notifications', icon: Icons.notifications, destination: 'notifications'),
+  MenuItem(title: 'My Address', icon: Icons.location_on, destination: 'my-address'),
+  MenuItem(title: 'My Gift Cards', icon: Icons.card_giftcard, destination: 'notifications'),
   // Add more menu items as needed
 ];
 
@@ -264,7 +267,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           fontWeight: FontWeight.bold
                       ),),
                       onTap: () {
-
+                        Get.toNamed(menuItem.destination as String);
                       },
                     ),
                   );

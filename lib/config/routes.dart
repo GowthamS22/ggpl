@@ -80,6 +80,83 @@ class Routes {
         page:() => CartScreen(),
         transition: Transition.cupertino,
         transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/coupons',
+        title: 'Coupons',
+        page:() => CouponScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/address',
+        title: 'Address',
+        page:() => AddressScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/add-address',
+        title: 'New Address',
+        page:() => AddAddressScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/order-success',
+        title: 'ORDER PLACED SUCCESSFULLY',
+        page:() => OrderSuccessScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/wishlist',
+        title: 'WISHLIST',
+        page:() => WishlistScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/my-orders',
+        title: 'MY ORDERS',
+        page:() => MyOrdersScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/notifications',
+        title: 'NOTIFICATIONS',
+        page:() => NotificationScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/faq',
+        title: 'FAQs',
+        page:() => FaqScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/terms-and-conditions',
+        title: 'Terms & Conditions',
+        page:() => TermsAndConditionsScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/help-support',
+        title: 'Help & Support',
+        page:() => HelpSupportScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
+    ),
+    GetPage(
+        name: '/my-address',
+        title: 'My Address',
+        page:() => MyAddressScreen(),
+        transition: Transition.cupertino,
+        transitionDuration: Duration(milliseconds: 500)
     )
   ];
 }

@@ -35,7 +35,21 @@ class _CategoryProductsState extends State<CategoryProducts> {
 
   String selectedFilter = 'sort_by';
 
-
+  // final ScrollController _scrollController = ScrollController();
+  //
+  // void scrollToItem(int index) {
+  //   // _scrollController.jumpTo(
+  //   //   _scrollController.position.maxScrollExtent *
+  //   //       (index / 100), // Assumes 100 items in the GridView.builder
+  //   // );
+  //
+  //   // Alternatively, you can use animateTo to smoothly scroll to the item
+  //   _scrollController.animateTo(
+  //     _scrollController.position.maxScrollExtent * (index / 15),
+  //     duration: Duration(milliseconds: 500),
+  //     curve: Curves.ease,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +83,8 @@ class _CategoryProductsState extends State<CategoryProducts> {
               margin: EdgeInsets.all(10),
               child: TextButton(
                 onPressed: () {
+                  //scrollToItem(6);
+                  print('test');
                 },
                 child: Text(items[index],style: TextStyle(
                   color: Colors.black,
@@ -135,6 +151,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
           children: [
             Expanded(
               child: GridView.builder(
+                //controller: _scrollController,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1, // Number of columns
                   mainAxisSpacing: 15, // Spacing between each row

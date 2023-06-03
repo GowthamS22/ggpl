@@ -18,6 +18,17 @@ class ProductController extends GetxController {
       Product(id: '2', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
       Product(id: '3', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
       Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
+      Product(id: '4', name: 'Apple', price: 100.00, imageUrl: 'assets/images/products/product-1.png'),
     ];
 
     products.value = fetchedProducts;
